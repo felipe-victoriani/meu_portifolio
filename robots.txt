@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Atualize a URL base quando publicar o portfólio
+Sitemap: https://felipe-victoriani.github.io/sitemap.xml

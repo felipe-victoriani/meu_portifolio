@@ -392,6 +392,134 @@ document
   });
 
 // ========================================
+// PROJETOS VIA GITHUB API
+// ========================================
+
+const GITHUB_USERNAME = "Felipe-Victoriani";
+
+// Fallback com os projetos estáticos caso a API falhe
+const STATIC_PROJECTS = [
+  {
+    name: "CRM para Clínica",
+    description:
+      "Sistema de gerenciamento de relacionamento com clientes para clínicas, desenvolvido com JavaScript para otimizar o atendimento e organização.",
+    tech: ["JavaScript", "HTML5", "CSS3"],
+    url: "https://github.com/felipe-victoriani/crm-para-clinica",
+    homepage: null,
+  },
+  {
+    name: "App Academia Gym",
+    description:
+      "Aplicativo mobile para academias desenvolvido com Flutter e Dart, oferecendo controle de treinos e acompanhamento fitness.",
+    tech: ["Flutter", "Dart", "Mobile"],
+    url: "https://github.com/felipe-victoriani/academia_gym",
+    homepage: null,
+  },
+  {
+    name: "Leuria Loja",
+    description:
+      "Plataforma de e-commerce desenvolvida com JavaScript, oferecendo experiência completa de compra online.",
+    tech: ["JavaScript", "HTML5", "CSS3"],
+    url: "https://github.com/felipe-victoriani/leuria_loja",
+    homepage: null,
+  },
+];
+
+function escapeHtml(str) {
+  if (!str) return "";
+  return str
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
+function buildProjectCard({ name, description, tech, url, homepage }) {
+  const techTags = tech.map((t) => `<span>${escapeHtml(t)}</span>`).join("");
+  const liveLink = homepage
+    ? `<a href="${escapeHtml(homepage)}" target="_blank" rel="noopener noreferrer">Ver projeto</a>`
+    : "";
+  return `
+    <div class="projeto-card">
+      <div class="projeto-content">
+        <h3>${escapeHtml(name)}</h3>
+        <p>${escapeHtml(description)}</p>
+        <div class="projeto-tech">${techTags}</div>
+        <div class="projeto-links">
+          ${liveLink}
+          <a href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-github"></i> Código
+          </a>
+        </div>
+      </div>
+    </div>`;
+}
+
+function renderStaticProjects() {
+  const grid = document.getElementById("projetos-grid");
+  const counter = document.getElementById("repos-count");
+  if (grid) grid.innerHTML = STATIC_PROJECTS.map(buildProjectCard).join("");
+  if (counter) counter.textContent = "E mais projetos no GitHub!";
+}
+
+async function loadGithubRepos() {
+  const grid = document.getElementById("projetos-grid");
+  const counter = document.getElementById("repos-count");
+
+  try {
+    const response = await fetch(
+      `https://api.github.com/users/${GITHUB_USERNAME}/repos?sort=updated&per_page=12&type=public`,
+      { headers: { Accept: "application/vnd.github.v3+json" } },
+    );
+
+    if (!response.ok)
+      throw new Error(`GitHub API respondeu: ${response.status}`);
+
+    const repos = await response.json();
+
+    // Filtrar forks sem descrição e pegar os 6 mais recentes com conteúdo
+    const publicRepos = repos.filter((r) => !r.fork);
+    const featured = publicRepos.filter((r) => r.description).slice(0, 6);
+
+    if (featured.length === 0) {
+      renderStaticProjects();
+      return;
+    }
+
+    const cards = featured.map((repo) => {
+      const tech = [];
+      if (repo.language) tech.push(repo.language);
+      if (repo.topics) tech.push(...repo.topics.slice(0, 2));
+
+      return buildProjectCard({
+        name: repo.name.replace(/[-_]/g, " "),
+        description: repo.description,
+        tech,
+        url: repo.html_url,
+        homepage: repo.homepage || null,
+      });
+    });
+
+    if (grid) grid.innerHTML = cards.join("");
+
+    const extras = Math.max(0, publicRepos.length - 6);
+    if (counter) {
+      counter.textContent =
+        extras > 0
+          ? `E mais ${extras} projetos no GitHub!`
+          : "Todos os projetos no GitHub:";
+    }
+  } catch (error) {
+    console.warn("Não foi possível carregar repositórios do GitHub:", error);
+    renderStaticProjects();
+  }
+}
+
+// Iniciar carregamento ao abrir a página
+loadGithubRepos();
+
+// ========================================
 // CONSOLE MESSAGE
 // ========================================
 

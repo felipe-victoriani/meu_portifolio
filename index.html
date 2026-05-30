@@ -7,11 +7,40 @@
       name="description"
       content="Portfólio de Carlos Felipe Lima Victoriani - Desenvolvedor Front-End especializado em criar interfaces modernas e funcionais"
     />
+    <!-- Open Graph / Preview social (LinkedIn, WhatsApp, etc.) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://felipe-victoriani.github.io/" />
+    <meta
+      property="og:title"
+      content="Carlos Felipe | Desenvolvedor Front-End"
+    />
+    <meta
+      property="og:description"
+      content="Portfólio de Carlos Felipe Lima Victoriani - Desenvolvedor Front-End especializado em criar interfaces modernas e funcionais"
+    />
+    <meta
+      property="og:image"
+      content="https://felipe-victoriani.github.io/images/og-preview.png"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Carlos Felipe | Desenvolvedor Front-End"
+    />
+    <meta
+      name="twitter:description"
+      content="Portfólio de Carlos Felipe Lima Victoriani - Desenvolvedor Front-End especializado em criar interfaces modernas e funcionais"
+    />
     <title>Carlos Felipe | Desenvolvedor Front-End</title>
     <link rel="stylesheet" href="style.css" />
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="preload"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      as="style"
+    />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
@@ -21,8 +50,38 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
+    <!-- Schema.org: dados estruturados para SEO -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Carlos Felipe Lima Victoriani",
+        "url": "https://felipe-victoriani.github.io/",
+        "jobTitle": "Desenvolvedor Front-End",
+        "description": "Desenvolvedor Front-End especializado em HTML5, CSS3 e JavaScript, criando interfaces modernas e funcionais.",
+        "email": "felipevictoriani@hotmail.com",
+        "telephone": "+55 67 99991-5653",
+        "sameAs": [
+          "https://github.com/Felipe-Victoriani",
+          "https://www.linkedin.com/in/carlos-felipe-lima-victoriani-98335018b/"
+        ],
+        "knowsAbout": [
+          "HTML5",
+          "CSS3",
+          "JavaScript",
+          "Bootstrap",
+          "Java",
+          "MySQL",
+          "Python",
+          "UI/UX"
+        ]
+      }
+    </script>
   </head>
   <body>
+    <!-- Skip to content: acessibilidade para leitores de tela -->
+    <a href="#home" class="skip-to-content">Pular para o conteúdo principal</a>
+
     <!-- NAVEGAÇÃO -->
     <nav class="navbar" id="navbar">
       <div class="container nav-container">
@@ -81,14 +140,24 @@
                 <i class="fab fa-whatsapp"></i>
               </a>
             </div>
+            <div class="hero-buttons">
+              <a href="#projetos" class="btn btn-primary">
+                <i class="fas fa-rocket" aria-hidden="true"></i> Ver Projetos
+              </a>
+              <a href="#contato" class="btn btn-secondary">
+                <i class="fas fa-envelope" aria-hidden="true"></i> Contato
+              </a>
+            </div>
           </div>
           <div class="hero-image">
             <div class="avatar-container">
               <div class="avatar-circle"></div>
               <img
                 src="images/ChatGPT Image 8 de fev. de 2026, 17_50_26.png"
-                alt="Carlos Felipe"
+                alt="Carlos Felipe Lima Victoriani - Desenvolvedor Front-End"
                 class="avatar-img"
+                fetchpriority="high"
+                decoding="async"
               />
             </div>
           </div>
@@ -111,63 +180,64 @@
         <div class="sobre-content">
           <div class="sobre-text">
             <p class="sobre-intro">
-              Sou estudante do
+              Desenvolvedor Front-End no
               <strong
                 >5º semestre de Análise e Desenvolvimento de Sistemas</strong
-              >, apaixonado por transformar ideias em interfaces funcionais e
-              visualmente impactantes.
+              >, com projetos reais entregues — de um
+              <strong>CRM para clínica</strong> a um
+              <strong>app mobile de academia</strong> e uma
+              <strong>plataforma de e-commerce</strong>.
             </p>
             <p>
-              Meu foco principal está no <strong>front-end</strong>, onde dedico
-              tempo para criar experiências de usuário intuitivas e responsivas.
-              Acredito que um bom design é invisível – ele simplesmente funciona
-              e encanta.
+              Meu trabalho vai além de montar telas bonitas. Escrevo código
+              semântico, acessível e com performance pensada desde o início —
+              variáveis CSS, Intersection Observer, lazy loading, métricas de
+              Core Web Vitals. Interfaces que simplesmente funcionam, em
+              qualquer dispositivo.
             </p>
             <p>
-              Além do front-end, possuo uma
-              <strong>base sólida em back-end</strong> com Java e POO,
-              experiência com <strong>bancos de dados MySQL</strong>, e domínio
-              de lógica de programação que me permite resolver problemas
-              complexos de forma eficiente.
+              Tenho uma <strong>trajetória incomum</strong>: antes de entrar em
+              TI, trabalhei como <strong>Técnico de Enfermagem</strong>. Isso me
+              ensinou algo que nenhum curso técnico ensina — enxergar o produto
+              pelos olhos de quem usa, não de quem constrói. Cada tela que crio
+              carrega esse olhar: o usuário no centro, o erro como algo a evitar
+              antes de acontecer.
             </p>
             <p>
-              Antes de migrar para a tecnologia, atuei como
-              <strong>Técnico de Enfermagem</strong>, experiência que me trouxe
-              senso de responsabilidade, trabalho em equipe sob pressão e
-              atenção meticulosa a processos — habilidades fundamentais que hoje
-              aplico no desenvolvimento de sistemas com qualidade e precisão.
-            </p>
-            <p>
-              Sou extremamente curioso e comunicativo – características que me
-              ajudam a aprender rapidamente e colaborar bem em equipe.
-              Atualmente, também estudo <strong>inglês na Wizard</strong> e
-              exploro o universo da <strong>Inteligência Artificial</strong>,
-              aplicando-a no meu dia a dia para aumentar produtividade e criar
-              soluções inovadoras.
+              Também atuo no universo da
+              <strong>Inteligência Artificial</strong>: já criei chatbots com
+              Python e GPT, aplico IA no meu fluxo de desenvolvimento
+              diariamente e estudo como integrar essas ferramentas em produtos
+              reais. Paralelamente, curso <strong>inglês na Wizard</strong> para
+              alcançar o mercado internacional.
             </p>
             <div class="sobre-highlight">
               <p>
-                Combinando criatividade com código, construo o futuro uma
-                interface por vez.
+                A enfermagem me ensinou a cuidar das pessoas. A tecnologia me
+                deu as ferramentas para fazer isso em escala.
               </p>
             </div>
           </div>
           <div class="sobre-info">
             <div class="info-card">
+              <i class="fas fa-graduation-cap info-icon" aria-hidden="true"></i>
               <h4>Formação</h4>
               <p>Tecnologia em ADS<br />5º Semestre</p>
             </div>
             <div class="info-card">
-              <h4>Especialização</h4>
-              <p>Desenvolvimento<br />Front-End</p>
+              <i class="fas fa-code info-icon" aria-hidden="true"></i>
+              <h4>Foco</h4>
+              <p>Front-End<br />+ IA Aplicada</p>
             </div>
             <div class="info-card">
+              <i class="fas fa-language info-icon" aria-hidden="true"></i>
               <h4>Idiomas</h4>
-              <p>Português (Nativo)<br />Inglês (Cursando)</p>
+              <p>Português (Nativo)<br />Inglês (em curso)</p>
             </div>
             <div class="info-card">
-              <h4>Interesse</h4>
-              <p>Inteligência<br />Artificial</p>
+              <i class="fas fa-briefcase info-icon" aria-hidden="true"></i>
+              <h4>Status</h4>
+              <p>Disponível para<br />oportunidades</p>
             </div>
           </div>
         </div>
@@ -185,7 +255,7 @@
         <div class="habilidades-grid">
           <!-- Front-end -->
           <div class="skill-category">
-            <h3>Front-End</h3>
+            <h3><i class="fas fa-code" aria-hidden="true"></i> Front-End</h3>
             <div class="skills-list">
               <div class="skill-item">
                 <span>HTML5</span>
@@ -210,7 +280,7 @@
 
           <!-- UI/UX -->
           <div class="skill-category">
-            <h3>UI / UX</h3>
+            <h3><i class="fas fa-palette" aria-hidden="true"></i> UI / UX</h3>
             <div class="skills-list">
               <div class="skill-item">
                 <span>Design de Interfaces</span>
@@ -229,7 +299,9 @@
 
           <!-- Back-end -->
           <div class="skill-category">
-            <h3>Back-End & Dados</h3>
+            <h3>
+              <i class="fas fa-server" aria-hidden="true"></i> Back-End & Dados
+            </h3>
             <div class="skills-list">
               <div class="skill-item">
                 <span>Java</span>
@@ -248,7 +320,10 @@
 
           <!-- IA -->
           <div class="skill-category">
-            <h3>Inteligência Artificial</h3>
+            <h3>
+              <i class="fas fa-brain" aria-hidden="true"></i> Inteligência
+              Artificial
+            </h3>
             <div class="skills-list">
               <div class="skill-item">
                 <span>Python + GPT</span>
@@ -337,91 +412,14 @@
           <h2 class="section-title">Projetos em destaque</h2>
           <div class="section-line"></div>
         </div>
-        <div class="projetos-grid">
-          <div class="projeto-card">
-            <div class="projeto-content">
-              <h3>CRM para Clínica</h3>
-              <p>
-                Sistema de gerenciamento de relacionamento com clientes para
-                clínicas, desenvolvido com JavaScript para otimizar o
-                atendimento e organização.
-              </p>
-              <div class="projeto-tech">
-                <span>JavaScript</span>
-                <span>HTML5</span>
-                <span>CSS3</span>
-              </div>
-              <div class="projeto-links">
-                <a
-                  href="https://github.com/felipe-victoriani/crm-para-clinica"
-                  target="_blank"
-                  >Ver projeto</a
-                >
-                <a
-                  href="https://github.com/felipe-victoriani/crm-para-clinica"
-                  target="_blank"
-                  >Código</a
-                >
-              </div>
-            </div>
-          </div>
-
-          <div class="projeto-card">
-            <div class="projeto-content">
-              <h3>App Academia Gym</h3>
-              <p>
-                Aplicativo mobile para academias desenvolvido com Flutter e
-                Dart, oferecendo controle de treinos e acompanhamento fitness.
-              </p>
-              <div class="projeto-tech">
-                <span>Flutter</span>
-                <span>Dart</span>
-                <span>Mobile</span>
-              </div>
-              <div class="projeto-links">
-                <a
-                  href="https://github.com/felipe-victoriani/academia_gym"
-                  target="_blank"
-                  >Ver projeto</a
-                >
-                <a
-                  href="https://github.com/felipe-victoriani/academia_gym"
-                  target="_blank"
-                  >Código</a
-                >
-              </div>
-            </div>
-          </div>
-
-          <div class="projeto-card">
-            <div class="projeto-content">
-              <h3>Leuria Loja</h3>
-              <p>
-                Plataforma de e-commerce desenvolvida com JavaScript, oferecendo
-                experiência completa de compra online.
-              </p>
-              <div class="projeto-tech">
-                <span>JavaScript</span>
-                <span>HTML5</span>
-                <span>CSS3</span>
-              </div>
-              <div class="projeto-links">
-                <a
-                  href="https://github.com/felipe-victoriani/leuria_loja"
-                  target="_blank"
-                  >Ver projeto</a
-                >
-                <a
-                  href="https://github.com/felipe-victoriani/leuria_loja"
-                  target="_blank"
-                  >Código</a
-                >
-              </div>
-            </div>
+        <div class="projetos-grid" id="projetos-grid">
+          <div class="repos-loading" id="repos-loading">
+            <div class="loading-spinner"></div>
+            <p>Carregando projetos do GitHub...</p>
           </div>
         </div>
         <div class="projetos-footer">
-          <p>E mais 8 projetos no GitHub!</p>
+          <p id="repos-count">Buscando repositórios...</p>
           <a
             href="https://github.com/Felipe-Victoriani"
             target="_blank"
@@ -457,6 +455,7 @@
           </div>
           <div class="contato-cards">
             <a href="mailto:felipevictoriani@hotmail.com" class="contato-card">
+              <i class="fas fa-envelope contato-icon" aria-hidden="true"></i>
               <h4>E-mail</h4>
               <p>felipevictoriani@hotmail.com</p>
             </a>
@@ -465,6 +464,7 @@
               target="_blank"
               class="contato-card"
             >
+              <i class="fab fa-linkedin contato-icon" aria-hidden="true"></i>
               <h4>LinkedIn</h4>
               <p>Carlos Felipe Lima</p>
             </a>
@@ -473,6 +473,7 @@
               target="_blank"
               class="contato-card"
             >
+              <i class="fab fa-github contato-icon" aria-hidden="true"></i>
               <h4>GitHub</h4>
               <p>@Felipe-Victoriani</p>
             </a>
@@ -481,6 +482,7 @@
               target="_blank"
               class="contato-card"
             >
+              <i class="fab fa-whatsapp contato-icon" aria-hidden="true"></i>
               <h4>WhatsApp</h4>
               <p>(67) 99991-5653</p>
             </a>
