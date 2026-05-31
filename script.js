@@ -539,3 +539,29 @@ console.log(
   "%c💡 Dica: Tente o Konami Code! ⬆⬆⬇⬇⬅➡⬅➡BA",
   "color: #ff6b6b; font-size: 12px; font-style: italic;",
 );
+
+// ========================================
+// HERO SHADOW OVERLAY ANIMATION
+// Portado do componente React/Framer Motion
+// Equivale a: animate(hueRotateMotionValue, 360, { repeat: Infinity, ease: "linear" })
+// ========================================
+(function () {
+  const feHueRotate = document.getElementById("hero-hue-rotate");
+  if (!feHueRotate) return;
+
+  // Configuração espelhando os props do componente original:
+  // animation.scale = 40, animation.speed = 30
+  // animationDuration = mapRange(30, 1, 100, 1000, 50) ≈ 722ms → duration = 722/25 ≈ 28.9s
+  const DURATION_MS = 28900;
+  let startTime = null;
+
+  function animateShadow(timestamp) {
+    if (!startTime) startTime = timestamp;
+    const elapsed = (timestamp - startTime) % DURATION_MS;
+    const hue = (elapsed / DURATION_MS) * 360;
+    feHueRotate.setAttribute("values", String(hue));
+    requestAnimationFrame(animateShadow);
+  }
+
+  requestAnimationFrame(animateShadow);
+})();

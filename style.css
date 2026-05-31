@@ -247,6 +247,34 @@ img {
   letter-spacing: 0.3em;
 }
 
+/* Shadow Overlay (portado do componente React/Framer Motion) */
+.shadow-overlay-wrapper {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.shadow-overlay-inner {
+  position: absolute;
+  inset: -52px;
+  filter: url(#hero-shadow-filter) blur(4px);
+}
+
+.shadow-overlay-color {
+  background-color: rgba(59, 130, 246, 0.55);
+  mask-image: url("https://framerusercontent.com/images/ceBGguIpUU8luwByxuQz79t7To.png");
+  -webkit-mask-image: url("https://framerusercontent.com/images/ceBGguIpUU8luwByxuQz79t7To.png");
+  mask-size: cover;
+  -webkit-mask-size: cover;
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+  mask-position: center;
+  -webkit-mask-position: center;
+  width: 100%;
+  height: 100%;
+}
+
 .hero-container {
   position: relative;
   z-index: 1;
