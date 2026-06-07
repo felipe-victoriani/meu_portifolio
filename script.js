@@ -197,7 +197,7 @@ function createParticle() {
         position: absolute;
         width: 2px;
         height: 2px;
-        background: rgba(0, 212, 255, 0.5);
+        background: rgba(99, 102, 241, 0.5);
         border-radius: 50%;
         pointer-events: none;
         top: ${Math.random() * 100}%;
@@ -240,22 +240,29 @@ if (heroBackground) {
 
 // ========================================
 // PARALLAX SUAVE NO HERO
+// Wrapped in prefers-reduced-motion check (UX Pro Max: HIGH severity)
 // ========================================
 
-window.addEventListener("scroll", () => {
-  const scrolled = window.pageYOffset;
-  const heroBackground = document.querySelector(".hero-background");
-  const heroContent = document.querySelector(".hero-content");
+const prefersReducedMotion = window.matchMedia(
+  "(prefers-reduced-motion: reduce)",
+).matches;
 
-  if (heroBackground) {
-    heroBackground.style.transform = `translateY(${scrolled * 0.5}px)`;
-  }
+if (!prefersReducedMotion) {
+  window.addEventListener("scroll", () => {
+    const scrolled = window.pageYOffset;
+    const heroBackground = document.querySelector(".hero-background");
+    const heroContent = document.querySelector(".hero-content");
 
-  if (heroContent && scrolled < 800) {
-    heroContent.style.opacity = 1 - scrolled / 800;
-    heroContent.style.transform = `translateY(${scrolled * 0.2}px)`;
-  }
-});
+    if (heroBackground) {
+      heroBackground.style.transform = `translateY(${scrolled * 0.5}px)`;
+    }
+
+    if (heroContent && scrolled < 800) {
+      heroContent.style.opacity = 1 - scrolled / 800;
+      heroContent.style.transform = `translateY(${scrolled * 0.2}px)`;
+    }
+  });
+}
 
 // ========================================
 // COPIAR EMAIL (OPCIONAL)
@@ -356,7 +363,7 @@ function activateEasterEgg() {
         font-size: 2rem;
         font-weight: bold;
         z-index: 9999;
-        box-shadow: 0 0 50px rgba(0, 212, 255, 0.5);
+        box-shadow: 0 0 50px rgba(99, 102, 241, 0.5);
         animation: pulse 1s ease-in-out infinite;
     `;
   message.textContent = "🎮 Easter Egg Ativado! 🎮";

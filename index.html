@@ -37,12 +37,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      rel="preload"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
-      as="style"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <!-- Font Awesome para ícones -->
@@ -107,57 +102,16 @@
     <!-- HERO / HOME -->
     <section id="home" class="hero">
       <div class="hero-background">
-        <!-- Shadow Overlay Effect (portado de React/Framer Motion para vanilla JS) -->
         <div class="shadow-overlay-wrapper">
-          <svg
-            style="position: absolute; width: 0; height: 0; overflow: hidden"
-            aria-hidden="true"
-          >
-            <defs>
-              <filter id="hero-shadow-filter">
-                <feTurbulence
-                  result="undulation"
-                  numOctaves="2"
-                  baseFrequency="0.0008,0.0032"
-                  seed="0"
-                  type="turbulence"
-                />
-                <feColorMatrix
-                  id="hero-hue-rotate"
-                  in="undulation"
-                  type="hueRotate"
-                  values="180"
-                />
-                <feColorMatrix
-                  in="dist"
-                  result="circulation"
-                  type="matrix"
-                  values="4 0 0 0 1  4 0 0 0 1  4 0 0 0 1  1 0 0 0 0"
-                />
-                <feDisplacementMap
-                  in="SourceGraphic"
-                  in2="circulation"
-                  scale="52"
-                  result="dist"
-                />
-                <feDisplacementMap
-                  in="dist"
-                  in2="undulation"
-                  scale="52"
-                  result="output"
-                />
-              </filter>
-            </defs>
-          </svg>
-          <div class="shadow-overlay-inner">
-            <div class="shadow-overlay-color"></div>
-          </div>
+          <div class="shadow-overlay-inner"></div>
         </div>
       </div>
       <div class="container hero-container">
         <div class="hero-content">
           <div class="hero-text">
-            <p class="hero-greeting">// Desenvolvedor Front-End</p>
+            <p class="hero-greeting">
+              <span class="status-dot"></span> Disponível para projetos
+            </p>
             <h1 class="hero-name">Carlos Felipe</h1>
             <h2 class="hero-title">Desenvolvedor Front-End</h2>
             <p class="hero-subtitle">
