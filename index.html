@@ -3,20 +3,34 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Aplica o tema salvo antes do primeiro paint, evitando flash -->
+    <script>
+      (function () {
+        var stored = localStorage.getItem("theme");
+        var theme =
+          stored ||
+          (window.matchMedia("(prefers-color-scheme: light)").matches
+            ? "light"
+            : "dark");
+        if (theme === "light") {
+          document.documentElement.setAttribute("data-theme", "light");
+        }
+      })();
+    </script>
     <meta
       name="description"
-      content="Portfólio de Carlos Felipe Lima Victoriani - Desenvolvedor Front-End especializado em criar interfaces modernas e funcionais"
+      content="Portfólio de Carlos Felipe Lima Victoriani - Desenvolvedor Full Stack Jr especializado em criar interfaces modernas e sistemas completos"
     />
     <!-- Open Graph / Preview social (LinkedIn, WhatsApp, etc.) -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://felipe-victoriani.github.io/" />
     <meta
       property="og:title"
-      content="Carlos Felipe | Desenvolvedor Front-End"
+      content="Carlos Felipe | Desenvolvedor Full Stack Jr"
     />
     <meta
       property="og:description"
-      content="Portfólio de Carlos Felipe Lima Victoriani - Desenvolvedor Front-End especializado em criar interfaces modernas e funcionais"
+      content="Portfólio de Carlos Felipe Lima Victoriani - Desenvolvedor Full Stack Jr especializado em criar interfaces modernas e sistemas completos"
     />
     <meta
       property="og:image"
@@ -25,13 +39,13 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta
       name="twitter:title"
-      content="Carlos Felipe | Desenvolvedor Front-End"
+      content="Carlos Felipe | Desenvolvedor Full Stack Jr"
     />
     <meta
       name="twitter:description"
-      content="Portfólio de Carlos Felipe Lima Victoriani - Desenvolvedor Front-End especializado em criar interfaces modernas e funcionais"
+      content="Portfólio de Carlos Felipe Lima Victoriani - Desenvolvedor Full Stack Jr especializado em criar interfaces modernas e sistemas completos"
     />
-    <title>Carlos Felipe | Desenvolvedor Front-End</title>
+    <title>Carlos Felipe | Desenvolvedor Full Stack Jr</title>
     <link rel="stylesheet" href="style.css" />
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -52,8 +66,8 @@
         "@type": "Person",
         "name": "Carlos Felipe Lima Victoriani",
         "url": "https://felipe-victoriani.github.io/",
-        "jobTitle": "Desenvolvedor Front-End",
-        "description": "Desenvolvedor Front-End especializado em HTML5, CSS3 e JavaScript, criando interfaces modernas e funcionais.",
+        "jobTitle": "Desenvolvedor Full Stack Jr",
+        "description": "Desenvolvedor Full Stack Jr especializado em HTML5, CSS3, JavaScript, Java e MySQL, criando interfaces modernas e sistemas completos.",
         "email": "felipevictoriani@hotmail.com",
         "telephone": "+55 67 99991-5653",
         "sameAs": [
@@ -91,10 +105,21 @@
           <li><a href="#projetos" class="nav-link">Projetos</a></li>
           <li><a href="#contato" class="nav-link">Contato</a></li>
         </ul>
-        <div class="hamburger" id="hamburger">
-          <span></span>
-          <span></span>
-          <span></span>
+        <div class="nav-actions">
+          <button
+            class="theme-toggle"
+            id="themeToggle"
+            type="button"
+            aria-label="Alternar tema claro/escuro"
+          >
+            <i class="fas fa-sun" aria-hidden="true"></i>
+            <i class="fas fa-moon" aria-hidden="true"></i>
+          </button>
+          <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
         </div>
       </div>
     </nav>
@@ -113,10 +138,11 @@
               <span class="status-dot"></span> Disponível para projetos
             </p>
             <h1 class="hero-name">Carlos Felipe</h1>
-            <h2 class="hero-title">Desenvolvedor Front-End</h2>
+            <h2 class="hero-title">Desenvolvedor Full Stack Jr</h2>
             <p class="hero-subtitle">
-              Transformando ideias em código limpo e interfaces intuitivas.
-              Especialista em HTML5, CSS3 e JavaScript.
+              Transformando ideias em código limpo, interfaces intuitivas e
+              sistemas completos. Do front ao back, com HTML5, CSS3,
+              JavaScript, Java e MySQL.
             </p>
             <div class="social-links">
               <a
@@ -155,7 +181,7 @@
               <div class="avatar-circle"></div>
               <img
                 src="images/ChatGPT Image 8 de fev. de 2026, 17_50_26.png"
-                alt="Carlos Felipe Lima Victoriani - Desenvolvedor Front-End"
+                alt="Carlos Felipe Lima Victoriani - Desenvolvedor Full Stack Jr"
                 class="avatar-img"
                 fetchpriority="high"
                 decoding="async"
@@ -227,7 +253,7 @@
             <div class="info-card">
               <i class="fas fa-code info-icon" aria-hidden="true"></i>
               <h4>Foco</h4>
-              <p>Front-End<br />+ IA Aplicada</p>
+              <p>Full Stack Jr<br />+ IA Aplicada</p>
             </div>
             <div class="info-card">
               <i class="fas fa-language info-icon" aria-hidden="true"></i>
@@ -444,9 +470,9 @@
             <h3>Pronto para o próximo projeto!</h3>
             <p>
               Estou sempre aberto a novas oportunidades, colaborações e projetos
-              desafiadores. Se você está procurando um desenvolvedor front-end
-              dedicado, comunicativo e apaixonado por criar experiências
-              digitais memoráveis, vamos conversar!
+              desafiadores. Se você está procurando um desenvolvedor full
+              stack jr dedicado, comunicativo e apaixonado por criar
+              experiências digitais memoráveis, vamos conversar!
             </p>
             <p>
               Seja para discutir uma ideia, propor uma colaboração ou apenas
@@ -497,8 +523,8 @@
         <div class="footer-content">
           <p class="footer-name">Carlos Felipe Lima Victoriani</p>
           <p class="footer-tagline">
-            Front-End Developer | HTML5 • CSS3 • JavaScript • Desenvolvido com
-            código puro
+            Full Stack Jr Developer | HTML5 • CSS3 • JavaScript • Java •
+            MySQL
           </p>
           <div class="footer-social">
             <a

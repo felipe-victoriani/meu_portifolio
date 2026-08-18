@@ -1,4 +1,25 @@
 // ========================================
+// TEMA CLARO/ESCURO
+// ========================================
+
+const themeToggle = document.getElementById("themeToggle");
+
+if (themeToggle) {
+  themeToggle.addEventListener("click", () => {
+    const isLight = document.documentElement.getAttribute("data-theme") === "light";
+    const nextTheme = isLight ? "dark" : "light";
+
+    if (nextTheme === "light") {
+      document.documentElement.setAttribute("data-theme", "light");
+    } else {
+      document.documentElement.removeAttribute("data-theme");
+    }
+
+    localStorage.setItem("theme", nextTheme);
+  });
+}
+
+// ========================================
 // NAVEGAÇÃO E MENU MOBILE
 // ========================================
 
@@ -144,7 +165,7 @@ animateElements.forEach((element) => {
 // ========================================
 
 const heroTitle = document.querySelector(".hero-title");
-const titleText = "Desenvolvedor Front-End";
+const titleText = "Desenvolvedor Full Stack Jr";
 let charIndex = 0;
 
 function typeWriter() {
@@ -184,84 +205,6 @@ function countUp(element, target) {
       element.textContent = Math.ceil(count);
     }
   }, 30);
-}
-
-// ========================================
-// PARTÍCULAS NO BACKGROUND (OPCIONAL)
-// ========================================
-
-function createParticle() {
-  const particle = document.createElement("div");
-  particle.className = "particle";
-  particle.style.cssText = `
-        position: absolute;
-        width: 2px;
-        height: 2px;
-        background: rgba(99, 102, 241, 0.5);
-        border-radius: 50%;
-        pointer-events: none;
-        top: ${Math.random() * 100}%;
-        left: ${Math.random() * 100}%;
-        animation: float ${5 + Math.random() * 10}s linear infinite;
-    `;
-
-  return particle;
-}
-
-// Adicionar CSS para animação de partículas
-const style = document.createElement("style");
-style.textContent = `
-    @keyframes float {
-        0%, 100% {
-            transform: translate(0, 0);
-            opacity: 0;
-        }
-        10% {
-            opacity: 1;
-        }
-        90% {
-            opacity: 1;
-        }
-        100% {
-            transform: translate(${Math.random() * 200 - 100}px, ${Math.random() * 200 - 100}px);
-            opacity: 0;
-        }
-    }
-`;
-document.head.appendChild(style);
-
-// Adicionar partículas ao hero background
-const heroBackground = document.querySelector(".hero-background");
-if (heroBackground) {
-  for (let i = 0; i < 30; i++) {
-    heroBackground.appendChild(createParticle());
-  }
-}
-
-// ========================================
-// PARALLAX SUAVE NO HERO
-// Wrapped in prefers-reduced-motion check (UX Pro Max: HIGH severity)
-// ========================================
-
-const prefersReducedMotion = window.matchMedia(
-  "(prefers-reduced-motion: reduce)",
-).matches;
-
-if (!prefersReducedMotion) {
-  window.addEventListener("scroll", () => {
-    const scrolled = window.pageYOffset;
-    const heroBackground = document.querySelector(".hero-background");
-    const heroContent = document.querySelector(".hero-content");
-
-    if (heroBackground) {
-      heroBackground.style.transform = `translateY(${scrolled * 0.5}px)`;
-    }
-
-    if (heroContent && scrolled < 800) {
-      heroContent.style.opacity = 1 - scrolled / 800;
-      heroContent.style.transform = `translateY(${scrolled * 0.2}px)`;
-    }
-  });
 }
 
 // ========================================
