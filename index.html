@@ -20,6 +20,7 @@
     <meta
       name="description"
       content="Portfólio de Carlos Felipe Lima Victoriani - Desenvolvedor Full Stack Jr especializado em criar interfaces modernas e sistemas completos"
+      data-i18n-attr="content:meta.description"
     />
     <!-- Open Graph / Preview social (LinkedIn, WhatsApp, etc.) -->
     <meta property="og:type" content="website" />
@@ -27,10 +28,12 @@
     <meta
       property="og:title"
       content="Carlos Felipe | Desenvolvedor Full Stack Jr"
+      data-i18n-attr="content:meta.title"
     />
     <meta
       property="og:description"
       content="Portfólio de Carlos Felipe Lima Victoriani - Desenvolvedor Full Stack Jr especializado em criar interfaces modernas e sistemas completos"
+      data-i18n-attr="content:meta.description"
     />
     <meta
       property="og:image"
@@ -40,12 +43,14 @@
     <meta
       name="twitter:title"
       content="Carlos Felipe | Desenvolvedor Full Stack Jr"
+      data-i18n-attr="content:meta.title"
     />
     <meta
       name="twitter:description"
       content="Portfólio de Carlos Felipe Lima Victoriani - Desenvolvedor Full Stack Jr especializado em criar interfaces modernas e sistemas completos"
+      data-i18n-attr="content:meta.description"
     />
-    <title>Carlos Felipe | Desenvolvedor Full Stack Jr</title>
+    <title data-i18n="meta.title">Carlos Felipe | Desenvolvedor Full Stack Jr</title>
     <link rel="stylesheet" href="style.css" />
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -89,7 +94,7 @@
   </head>
   <body>
     <!-- Skip to content: acessibilidade para leitores de tela -->
-    <a href="#home" class="skip-to-content">Pular para o conteúdo principal</a>
+    <a href="#home" class="skip-to-content" data-i18n="a11y.skipToContent">Pular para o conteúdo principal</a>
 
     <!-- NAVEGAÇÃO -->
     <nav class="navbar" id="navbar">
@@ -98,19 +103,44 @@
           <span class="logo-text">CF<span class="dot">.</span></span>
         </div>
         <ul class="nav-menu" id="navMenu">
-          <li><a href="#home" class="nav-link">Home</a></li>
-          <li><a href="#sobre" class="nav-link">Sobre</a></li>
-          <li><a href="#habilidades" class="nav-link">Habilidades</a></li>
-          <li><a href="#certificados" class="nav-link">Certificados</a></li>
-          <li><a href="#projetos" class="nav-link">Projetos</a></li>
-          <li><a href="#contato" class="nav-link">Contato</a></li>
+          <li><a href="#home" class="nav-link" data-i18n="nav.home">Home</a></li>
+          <li><a href="#sobre" class="nav-link" data-i18n="nav.about">Sobre</a></li>
+          <li><a href="#habilidades" class="nav-link" data-i18n="nav.skills">Habilidades</a></li>
+          <li><a href="#certificados" class="nav-link" data-i18n="nav.certificates">Certificados</a></li>
+          <li><a href="#projetos" class="nav-link" data-i18n="nav.projects">Projetos</a></li>
+          <li><a href="#contato" class="nav-link" data-i18n="nav.contact">Contato</a></li>
         </ul>
         <div class="nav-actions">
+          <div
+            class="lang-toggle"
+            id="langToggle"
+            role="group"
+            aria-label="Idioma do site"
+            data-i18n-attr="aria-label:a11y.langToggleGroup"
+          >
+            <button
+              type="button"
+              class="lang-option"
+              data-lang="pt"
+              aria-pressed="true"
+            >
+              PT
+            </button>
+            <button
+              type="button"
+              class="lang-option"
+              data-lang="en"
+              aria-pressed="false"
+            >
+              EN
+            </button>
+          </div>
           <button
             class="theme-toggle"
             id="themeToggle"
             type="button"
             aria-label="Alternar tema claro/escuro"
+            data-i18n-attr="aria-label:a11y.themeToggle"
           >
             <i class="fas fa-sun" aria-hidden="true"></i>
             <i class="fas fa-moon" aria-hidden="true"></i>
@@ -135,11 +165,12 @@
         <div class="hero-content">
           <div class="hero-text">
             <p class="hero-greeting">
-              <span class="status-dot"></span> Disponível para projetos
+              <span class="status-dot"></span>
+              <span data-i18n="hero.greeting">Disponível para projetos</span>
             </p>
             <h1 class="hero-name">Carlos Felipe</h1>
             <h2 class="hero-title">Desenvolvedor Full Stack Jr</h2>
-            <p class="hero-subtitle">
+            <p class="hero-subtitle" data-i18n="hero.subtitle">
               Transformando ideias em código limpo, interfaces intuitivas e
               sistemas completos. Do front ao back, com HTML5, CSS3,
               JavaScript, Java e MySQL.
@@ -168,10 +199,10 @@
               </a>
             </div>
             <div class="hero-buttons">
-              <a href="#projetos" class="btn btn-primary">
+              <a href="#projetos" class="btn btn-primary" data-i18n="hero.ctaProjects">
                 <i class="fas fa-rocket" aria-hidden="true"></i> Ver Projetos
               </a>
-              <a href="#contato" class="btn btn-secondary">
+              <a href="#contato" class="btn btn-secondary" data-i18n="hero.ctaContact">
                 <i class="fas fa-envelope" aria-hidden="true"></i> Contato
               </a>
             </div>
@@ -185,12 +216,13 @@
                 class="avatar-img"
                 fetchpriority="high"
                 decoding="async"
+                data-i18n-attr="alt:hero.avatarAlt"
               />
             </div>
           </div>
         </div>
         <div class="scroll-indicator">
-          <span>Scroll</span>
+          <span data-i18n="hero.scroll">Scroll</span>
           <div class="scroll-line"></div>
         </div>
       </div>
@@ -201,12 +233,12 @@
       <div class="container">
         <div class="section-header">
           <span class="section-number">01.</span>
-          <h2 class="section-title">Sobre mim</h2>
+          <h2 class="section-title" data-i18n="sobre.title">Sobre mim</h2>
           <div class="section-line"></div>
         </div>
         <div class="sobre-content">
           <div class="sobre-text">
-            <p class="sobre-intro">
+            <p class="sobre-intro" data-i18n="sobre.p1">
               Dev:
               <strong>Formado em Análise e Desenvolvimento de Sistemas</strong>,
               com projetos reais entregues — de um
@@ -214,14 +246,14 @@
               <strong>app mobile de academia</strong> e uma
               <strong>plataforma de e-commerce</strong>.
             </p>
-            <p>
+            <p data-i18n="sobre.p2">
               Meu trabalho vai além de montar telas bonitas. Escrevo código
               semântico, acessível e com performance pensada desde o início —
               variáveis CSS, Intersection Observer, lazy loading, métricas de
               Core Web Vitals. Interfaces que simplesmente funcionam, em
               qualquer dispositivo.
             </p>
-            <p>
+            <p data-i18n="sobre.p3">
               Tenho uma <strong>trajetória incomum</strong>: antes de entrar em
               TI, trabalhei como <strong>Técnico de Enfermagem</strong>. Isso me
               ensinou algo que nenhum curso técnico ensina — enxergar o produto
@@ -229,7 +261,7 @@
               carrega esse olhar: o usuário no centro, o erro como algo a evitar
               antes de acontecer.
             </p>
-            <p>
+            <p data-i18n="sobre.p4">
               Também atuo no universo da
               <strong>Inteligência Artificial</strong>: já criei chatbots com
               Python e GPT, aplico IA no meu fluxo de desenvolvimento
@@ -238,7 +270,7 @@
               alcançar o mercado internacional.
             </p>
             <div class="sobre-highlight">
-              <p>
+              <p data-i18n="sobre.highlight">
                 A enfermagem me ensinou a cuidar das pessoas. A tecnologia me
                 deu as ferramentas para fazer isso em escala.
               </p>
@@ -247,23 +279,23 @@
           <div class="sobre-info">
             <div class="info-card">
               <i class="fas fa-graduation-cap info-icon" aria-hidden="true"></i>
-              <h4>Formação</h4>
-              <p>Tecnologia em ADS<br />2026</p>
+              <h4 data-i18n="sobre.card1.title">Formação</h4>
+              <p data-i18n="sobre.card1.text">Tecnologia em ADS<br />2026</p>
             </div>
             <div class="info-card">
               <i class="fas fa-code info-icon" aria-hidden="true"></i>
-              <h4>Foco</h4>
-              <p>Full Stack Jr<br />+ IA Aplicada</p>
+              <h4 data-i18n="sobre.card2.title">Foco</h4>
+              <p data-i18n="sobre.card2.text">Full Stack Jr<br />+ IA Aplicada</p>
             </div>
             <div class="info-card">
               <i class="fas fa-language info-icon" aria-hidden="true"></i>
-              <h4>Idiomas</h4>
-              <p>Português (Nativo)<br />Inglês (em curso)</p>
+              <h4 data-i18n="sobre.card3.title">Idiomas</h4>
+              <p data-i18n="sobre.card3.text">Português (Nativo)<br />Inglês (em curso)</p>
             </div>
             <div class="info-card">
               <i class="fas fa-briefcase info-icon" aria-hidden="true"></i>
-              <h4>Status</h4>
-              <p>Disponível para<br />oportunidades</p>
+              <h4 data-i18n="sobre.card4.title">Status</h4>
+              <p data-i18n="sobre.card4.text">Disponível para<br />oportunidades</p>
             </div>
           </div>
         </div>
@@ -275,13 +307,13 @@
       <div class="container">
         <div class="section-header">
           <span class="section-number">02.</span>
-          <h2 class="section-title">Habilidades técnicas</h2>
+          <h2 class="section-title" data-i18n="habilidades.title">Habilidades técnicas</h2>
           <div class="section-line"></div>
         </div>
         <div class="habilidades-grid">
           <!-- Front-end -->
           <div class="skill-category">
-            <h3><i class="fas fa-code" aria-hidden="true"></i> Front-End</h3>
+            <h3><i class="fas fa-code" aria-hidden="true"></i> <span data-i18n="habilidades.frontend.title">Front-End</span></h3>
             <div class="skills-list">
               <div class="skill-item">
                 <span>HTML5</span>
@@ -299,7 +331,7 @@
                 <span>Bootstrap 5</span>
               </div>
               <div class="skill-item">
-                <span>Design Responsivo</span>
+                <span data-i18n="habilidades.frontend.responsive">Design Responsivo</span>
               </div>
             </div>
           </div>
@@ -309,16 +341,16 @@
             <h3><i class="fas fa-palette" aria-hidden="true"></i> UI / UX</h3>
             <div class="skills-list">
               <div class="skill-item">
-                <span>Design de Interfaces</span>
+                <span data-i18n="habilidades.uiux.interfaceDesign">Design de Interfaces</span>
               </div>
               <div class="skill-item">
-                <span>Experiência do Usuário</span>
+                <span data-i18n="habilidades.uiux.ux">Experiência do Usuário</span>
               </div>
               <div class="skill-item">
-                <span>Teoria das Cores</span>
+                <span data-i18n="habilidades.uiux.colorTheory">Teoria das Cores</span>
               </div>
               <div class="skill-item">
-                <span>Fundamentos de Design</span>
+                <span data-i18n="habilidades.uiux.designFundamentals">Fundamentos de Design</span>
               </div>
             </div>
           </div>
@@ -326,20 +358,20 @@
           <!-- Back-end -->
           <div class="skill-category">
             <h3>
-              <i class="fas fa-server" aria-hidden="true"></i> Back-End & Dados
+              <i class="fas fa-server" aria-hidden="true"></i> <span data-i18n="habilidades.backend.title">Back-End & Dados</span>
             </h3>
             <div class="skills-list">
               <div class="skill-item">
                 <span>Java</span>
               </div>
               <div class="skill-item">
-                <span>POO</span>
+                <span data-i18n="habilidades.backend.oop">POO</span>
               </div>
               <div class="skill-item">
                 <span>MySQL</span>
               </div>
               <div class="skill-item">
-                <span>Lógica de Programação</span>
+                <span data-i18n="habilidades.backend.logic">Lógica de Programação</span>
               </div>
             </div>
           </div>
@@ -347,21 +379,21 @@
           <!-- IA -->
           <div class="skill-category">
             <h3>
-              <i class="fas fa-brain" aria-hidden="true"></i> Inteligência
-              Artificial
+              <i class="fas fa-brain" aria-hidden="true"></i> <span data-i18n="habilidades.ai.title">Inteligência
+              Artificial</span>
             </h3>
             <div class="skills-list">
               <div class="skill-item">
                 <span>Python + GPT</span>
               </div>
               <div class="skill-item">
-                <span>Chatbot com IA</span>
+                <span data-i18n="habilidades.ai.chatbot">Chatbot com IA</span>
               </div>
               <div class="skill-item">
-                <span>IA para Produtividade</span>
+                <span data-i18n="habilidades.ai.productivity">IA para Produtividade</span>
               </div>
               <div class="skill-item">
-                <span>IA Aplicada</span>
+                <span data-i18n="habilidades.ai.applied">IA Aplicada</span>
               </div>
             </div>
           </div>
@@ -374,57 +406,57 @@
       <div class="container">
         <div class="section-header">
           <span class="section-number">03.</span>
-          <h2 class="section-title">Certificados</h2>
+          <h2 class="section-title" data-i18n="certificados.title">Certificados</h2>
           <div class="section-line"></div>
         </div>
         <div class="certificados-grid">
           <div class="certificado-card">
-            <h4>HTML e CSS: Ambientes, Estrutura e Tags</h4>
-            <p>Fundamentos da construção web</p>
+            <h4 data-i18n="certificados.c1.title">HTML e CSS: Ambientes, Estrutura e Tags</h4>
+            <p data-i18n="certificados.c1.text">Fundamentos da construção web</p>
           </div>
           <div class="certificado-card">
-            <h4>HTML e CSS: Classes, Posicionamento e Flexbox</h4>
-            <p>Layout moderno e responsivo</p>
+            <h4 data-i18n="certificados.c2.title">HTML e CSS: Classes, Posicionamento e Flexbox</h4>
+            <p data-i18n="certificados.c2.text">Layout moderno e responsivo</p>
           </div>
           <div class="certificado-card">
-            <h4>HTML e CSS: Cabeçalho, Footer e Variáveis CSS</h4>
-            <p>Estruturas completas e variáveis</p>
+            <h4 data-i18n="certificados.c3.title">HTML e CSS: Cabeçalho, Footer e Variáveis CSS</h4>
+            <p data-i18n="certificados.c3.text">Estruturas completas e variáveis</p>
           </div>
           <div class="certificado-card">
-            <h4>Bootstrap 5: Landing Page Responsiva</h4>
-            <p>Framework para desenvolvimento ágil</p>
+            <h4 data-i18n="certificados.c4.title">Bootstrap 5: Landing Page Responsiva</h4>
+            <p data-i18n="certificados.c4.text">Framework para desenvolvimento ágil</p>
           </div>
           <div class="certificado-card">
-            <h4>UI para Devs: Fundamentos de Design</h4>
-            <p>Princípios de design para interfaces</p>
+            <h4 data-i18n="certificados.c5.title">UI para Devs: Fundamentos de Design</h4>
+            <p data-i18n="certificados.c5.text">Princípios de design para interfaces</p>
           </div>
           <div class="certificado-card">
-            <h4>Lógica de Programação com JavaScript</h4>
-            <p>Algoritmos e estruturas de dados</p>
+            <h4 data-i18n="certificados.c6.title">Lógica de Programação com JavaScript</h4>
+            <p data-i18n="certificados.c6.text">Algoritmos e estruturas de dados</p>
           </div>
           <div class="certificado-card">
-            <h4>Java: Criando a Primeira Aplicação</h4>
-            <p>Introdução ao desenvolvimento Java</p>
+            <h4 data-i18n="certificados.c7.title">Java: Criando a Primeira Aplicação</h4>
+            <p data-i18n="certificados.c7.text">Introdução ao desenvolvimento Java</p>
           </div>
           <div class="certificado-card">
-            <h4>Java: Aplicando Orientação a Objetos</h4>
-            <p>POO e boas práticas</p>
+            <h4 data-i18n="certificados.c8.title">Java: Aplicando Orientação a Objetos</h4>
+            <p data-i18n="certificados.c8.text">POO e boas práticas</p>
           </div>
           <div class="certificado-card">
-            <h4>MySQL: Conhecendo a Ferramenta</h4>
-            <p>Banco de dados relacional</p>
+            <h4 data-i18n="certificados.c9.title">MySQL: Conhecendo a Ferramenta</h4>
+            <p data-i18n="certificados.c9.text">Banco de dados relacional</p>
           </div>
           <div class="certificado-card">
-            <h4>MySQL (40 horas)</h4>
-            <p>Curso em Vídeo - Aprofundamento</p>
+            <h4 data-i18n="certificados.c10.title">MySQL (40 horas)</h4>
+            <p data-i18n="certificados.c10.text">Curso em Vídeo - Aprofundamento</p>
           </div>
           <div class="certificado-card">
-            <h4>Python e GPT: Criação de Chatbot com IA</h4>
-            <p>Inteligência artificial aplicada</p>
+            <h4 data-i18n="certificados.c11.title">Python e GPT: Criação de Chatbot com IA</h4>
+            <p data-i18n="certificados.c11.text">Inteligência artificial aplicada</p>
           </div>
           <div class="certificado-card">
-            <h4>Aprendizagem com IA: Personalizando a Rotina</h4>
-            <p>IA para produtividade com ChatGPT</p>
+            <h4 data-i18n="certificados.c12.title">Aprendizagem com IA: Personalizando a Rotina</h4>
+            <p data-i18n="certificados.c12.text">IA para produtividade com ChatGPT</p>
           </div>
         </div>
       </div>
@@ -435,21 +467,22 @@
       <div class="container">
         <div class="section-header">
           <span class="section-number">04.</span>
-          <h2 class="section-title">Projetos em destaque</h2>
+          <h2 class="section-title" data-i18n="projetos.title">Projetos em destaque</h2>
           <div class="section-line"></div>
         </div>
         <div class="projetos-grid" id="projetos-grid">
           <div class="repos-loading" id="repos-loading">
             <div class="loading-spinner"></div>
-            <p>Carregando projetos do GitHub...</p>
+            <p data-i18n="projetos.loading">Carregando projetos do GitHub...</p>
           </div>
         </div>
         <div class="projetos-footer">
-          <p id="repos-count">Buscando repositórios...</p>
+          <p id="repos-count" data-i18n="projetos.fetching">Buscando repositórios...</p>
           <a
             href="https://github.com/Felipe-Victoriani"
             target="_blank"
             class="btn btn-outline"
+            data-i18n="projetos.viewAll"
           >
             Ver todos no GitHub
           </a>
@@ -462,19 +495,19 @@
       <div class="container">
         <div class="section-header">
           <span class="section-number">05.</span>
-          <h2 class="section-title">Vamos trabalhar juntos?</h2>
+          <h2 class="section-title" data-i18n="contato.title">Vamos trabalhar juntos?</h2>
           <div class="section-line"></div>
         </div>
         <div class="contato-content">
           <div class="contato-text">
-            <h3>Pronto para o próximo projeto!</h3>
-            <p>
+            <h3 data-i18n="contato.subtitle">Pronto para o próximo projeto!</h3>
+            <p data-i18n="contato.p1">
               Estou sempre aberto a novas oportunidades, colaborações e projetos
               desafiadores. Se você está procurando um desenvolvedor full
               stack jr dedicado, comunicativo e apaixonado por criar
               experiências digitais memoráveis, vamos conversar!
             </p>
-            <p>
+            <p data-i18n="contato.p2">
               Seja para discutir uma ideia, propor uma colaboração ou apenas
               bater um papo sobre tecnologia, ficarei feliz em responder.
             </p>
@@ -482,7 +515,7 @@
           <div class="contato-cards">
             <a href="mailto:felipevictoriani@hotmail.com" class="contato-card">
               <i class="fas fa-envelope contato-icon" aria-hidden="true"></i>
-              <h4>E-mail</h4>
+              <h4 data-i18n="contato.email">E-mail</h4>
               <p>felipevictoriani@hotmail.com</p>
             </a>
             <a
@@ -549,7 +582,7 @@
               <i class="fab fa-whatsapp"></i>
             </a>
           </div>
-          <p class="footer-copy">
+          <p class="footer-copy" data-i18n="footer.copy">
             &copy; 2026 Carlos Felipe. Todos os direitos reservados.
           </p>
         </div>
@@ -557,10 +590,16 @@
     </footer>
 
     <!-- Botão Voltar ao Topo -->
-    <button id="backToTop" class="back-to-top" aria-label="Voltar ao topo">
+    <button
+      id="backToTop"
+      class="back-to-top"
+      aria-label="Voltar ao topo"
+      data-i18n-attr="aria-label:a11y.backToTop"
+    >
       ↑
     </button>
 
+    <script src="i18n.js"></script>
     <script src="script.js"></script>
 
     <!-- 

@@ -165,16 +165,16 @@ animateElements.forEach((element) => {
 // ========================================
 
 const heroTitle = document.querySelector(".hero-title");
-const titleText = "Desenvolvedor Full Stack Jr";
 let charIndex = 0;
+let typeWriterTimeout = null;
 
 function typeWriter() {
+  const titleText = window.i18n ? window.i18n.t("hero.title") : "Desenvolvedor Full Stack Jr";
   if (charIndex < titleText.length) {
     heroTitle.textContent = titleText.substring(0, charIndex + 1);
     charIndex++;
-    setTimeout(typeWriter, 100);
+    typeWriterTimeout = setTimeout(typeWriter, 100);
   } else {
-    // Adiciona o cursor piscante após terminar de digitar
     const cursor = document.createElement("span");
     cursor.className = "typing-cursor";
     cursor.textContent = "|";
@@ -182,11 +182,21 @@ function typeWriter() {
   }
 }
 
+function restartTypeWriter() {
+  clearTimeout(typeWriterTimeout);
+  charIndex = 0;
+  heroTitle.textContent = "";
+  typeWriterTimeout = setTimeout(typeWriter, 100);
+}
+
 // Iniciar efeito de digitação após o carregamento
 window.addEventListener("load", () => {
   heroTitle.textContent = "";
-  setTimeout(typeWriter, 500);
+  typeWriterTimeout = setTimeout(typeWriter, 500);
 });
+
+// Reinicia o efeito ao trocar de idioma
+document.addEventListener("languagechange", restartTypeWriter);
 
 // ========================================
 // CONTADOR DE CERTIFICADOS
@@ -219,7 +229,8 @@ if (emailCard) {
 
     navigator.clipboard.writeText(email).then(() => {
       const originalText = emailCard.querySelector("h4").textContent;
-      emailCard.querySelector("h4").textContent = "E-mail Copiado!";
+      const copiedText = window.i18n ? window.i18n.t("contato.emailCopied") : "E-mail Copiado!";
+      emailCard.querySelector("h4").textContent = copiedText;
 
       setTimeout(() => {
         emailCard.querySelector("h4").textContent = originalText;
@@ -347,33 +358,38 @@ document
 
 const GITHUB_USERNAME = "Felipe-Victoriani";
 
-// Fallback com os projetos estáticos caso a API falhe
-const STATIC_PROJECTS = [
+// Fallback com os projetos estáticos caso a API falhe (nome/descrição vêm do i18n)
+const STATIC_PROJECTS_META = [
   {
-    name: "CRM para Clínica",
-    description:
-      "Sistema de gerenciamento de relacionamento com clientes para clínicas, desenvolvido com JavaScript para otimizar o atendimento e organização.",
+    key: "crm",
     tech: ["JavaScript", "HTML5", "CSS3"],
     url: "https://github.com/felipe-victoriani/crm-para-clinica",
     homepage: null,
   },
   {
-    name: "App Academia Gym",
-    description:
-      "Aplicativo mobile para academias desenvolvido com Flutter e Dart, oferecendo controle de treinos e acompanhamento fitness.",
+    key: "gym",
     tech: ["Flutter", "Dart", "Mobile"],
     url: "https://github.com/felipe-victoriani/academia_gym",
     homepage: null,
   },
   {
-    name: "Leuria Loja",
-    description:
-      "Plataforma de e-commerce desenvolvida com JavaScript, oferecendo experiência completa de compra online.",
+    key: "store",
     tech: ["JavaScript", "HTML5", "CSS3"],
     url: "https://github.com/felipe-victoriani/leuria_loja",
     homepage: null,
   },
 ];
+
+function getStaticProjects() {
+  const dict = window.i18n ? window.i18n.t("static_projects") : {};
+  return STATIC_PROJECTS_META.map((meta) => ({
+    name: (dict[meta.key] && dict[meta.key].name) || meta.key,
+    description: (dict[meta.key] && dict[meta.key].description) || "",
+    tech: meta.tech,
+    url: meta.url,
+    homepage: meta.homepage,
+  }));
+}
 
 function escapeHtml(str) {
   if (!str) return "";
@@ -386,9 +402,11 @@ function escapeHtml(str) {
 }
 
 function buildProjectCard({ name, description, tech, url, homepage }) {
+  const viewProjectLabel = window.i18n ? window.i18n.t("projetos.viewProject") : "Ver projeto";
+  const codeLabel = window.i18n ? window.i18n.t("projetos.code") : "Código";
   const techTags = tech.map((t) => `<span>${escapeHtml(t)}</span>`).join("");
   const liveLink = homepage
-    ? `<a href="${escapeHtml(homepage)}" target="_blank" rel="noopener noreferrer">Ver projeto</a>`
+    ? `<a href="${escapeHtml(homepage)}" target="_blank" rel="noopener noreferrer">${escapeHtml(viewProjectLabel)}</a>`
     : "";
   return `
     <div class="projeto-card">
@@ -399,24 +417,58 @@ function buildProjectCard({ name, description, tech, url, homepage }) {
         <div class="projeto-links">
           ${liveLink}
           <a href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer">
-            <i class="fab fa-github"></i> Código
+            <i class="fab fa-github"></i> ${escapeHtml(codeLabel)}
           </a>
         </div>
       </div>
     </div>`;
 }
 
+// "static" enquanto não há dados do GitHub, "live" após a API responder —
+// permite re-renderizar ao trocar de idioma sem refazer a requisição
+let currentProjectsSource = "static";
+let currentLiveFeatured = [];
+let currentLiveExtras = 0;
+
 function renderStaticProjects() {
+  currentProjectsSource = "static";
   const grid = document.getElementById("projetos-grid");
   const counter = document.getElementById("repos-count");
-  if (grid) grid.innerHTML = STATIC_PROJECTS.map(buildProjectCard).join("");
-  if (counter) counter.textContent = "E mais projetos no GitHub!";
+  if (grid) grid.innerHTML = getStaticProjects().map(buildProjectCard).join("");
+  if (counter) {
+    counter.textContent = window.i18n
+      ? window.i18n.t("projetos.moreGeneric")
+      : "E mais projetos no GitHub!";
+  }
+}
+
+function renderLiveProjects() {
+  const grid = document.getElementById("projetos-grid");
+  const counter = document.getElementById("repos-count");
+  const cards = currentLiveFeatured.map((repo) =>
+    buildProjectCard({
+      name: repo.name.replace(/[-_]/g, " "),
+      description: repo.description,
+      tech: repo.tech,
+      url: repo.url,
+      homepage: repo.homepage,
+    }),
+  );
+  if (grid) grid.innerHTML = cards.join("");
+  if (counter) {
+    if (currentLiveExtras > 0) {
+      counter.textContent = window.i18n
+        ? window.i18n.t("projetos.moreCount")(currentLiveExtras)
+        : `E mais ${currentLiveExtras} projetos no GitHub!`;
+    } else {
+      counter.textContent = window.i18n
+        ? window.i18n.t("projetos.allOnGithub")
+        : "Todos os projetos no GitHub:";
+    }
+  }
 }
 
 async function loadGithubRepos() {
-  const grid = document.getElementById("projetos-grid");
-  const counter = document.getElementById("repos-count");
-
   try {
     const response = await fetch(
       `https://api.github.com/users/${GITHUB_USERNAME}/repos?sort=updated&per_page=12&type=public`,
@@ -437,29 +489,21 @@ async function loadGithubRepos() {
       return;
     }
 
-    const cards = featured.map((repo) => {
+    currentProjectsSource = "live";
+    currentLiveFeatured = featured.map((repo) => {
       const tech = [];
       if (repo.language) tech.push(repo.language);
       if (repo.topics) tech.push(...repo.topics.slice(0, 2));
-
-      return buildProjectCard({
-        name: repo.name.replace(/[-_]/g, " "),
+      return {
+        name: repo.name,
         description: repo.description,
         tech,
         url: repo.html_url,
         homepage: repo.homepage || null,
-      });
+      };
     });
-
-    if (grid) grid.innerHTML = cards.join("");
-
-    const extras = Math.max(0, publicRepos.length - 6);
-    if (counter) {
-      counter.textContent =
-        extras > 0
-          ? `E mais ${extras} projetos no GitHub!`
-          : "Todos os projetos no GitHub:";
-    }
+    currentLiveExtras = Math.max(0, publicRepos.length - 6);
+    renderLiveProjects();
   } catch (error) {
     console.warn("Não foi possível carregar repositórios do GitHub:", error);
     renderStaticProjects();
@@ -468,6 +512,16 @@ async function loadGithubRepos() {
 
 // Iniciar carregamento ao abrir a página
 loadGithubRepos();
+
+// Re-renderiza os cards (labels/fallback traduzidos) ao trocar de idioma,
+// sem refazer a chamada à API do GitHub
+document.addEventListener("languagechange", () => {
+  if (currentProjectsSource === "live") {
+    renderLiveProjects();
+  } else {
+    renderStaticProjects();
+  }
+});
 
 // ========================================
 // CONSOLE MESSAGE
