@@ -56,7 +56,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <!-- Font Awesome para ícones -->
@@ -156,25 +156,33 @@
 
     <!-- HERO / HOME -->
     <section id="home" class="hero">
-      <div class="hero-background">
-        <div class="shadow-overlay-wrapper">
-          <div class="shadow-overlay-inner"></div>
-        </div>
+      <!-- Brilhos vermelhos difusos (decorativos) -->
+      <div class="hero-background" aria-hidden="true">
+        <div class="hero-glow hero-glow--1"></div>
+        <div class="hero-glow hero-glow--2"></div>
       </div>
       <div class="container hero-container">
         <div class="hero-content">
           <div class="hero-text">
             <p class="hero-greeting">
-              <span class="status-dot"></span>
+              <span class="status-dot" aria-hidden="true"></span>
               <span data-i18n="hero.greeting">Disponível para projetos</span>
             </p>
-            <h1 class="hero-name">Carlos Felipe</h1>
+            <h1 class="hero-name">Carlos<br /><span class="accent">Felipe.</span></h1>
             <h2 class="hero-title">Desenvolvedor Full Stack Jr</h2>
             <p class="hero-subtitle" data-i18n="hero.subtitle">
               Transformando ideias em código limpo, interfaces intuitivas e
               sistemas completos. Do front ao back, com HTML5, CSS3,
               JavaScript, Java e MySQL.
             </p>
+            <div class="hero-buttons">
+              <a href="#projetos" class="btn btn-primary" data-i18n="hero.ctaProjects">
+                <i class="fas fa-rocket" aria-hidden="true"></i> Ver Projetos
+              </a>
+              <a href="#contato" class="btn btn-secondary" data-i18n="hero.ctaContact">
+                <i class="fas fa-envelope" aria-hidden="true"></i> Contato
+              </a>
+            </div>
             <div class="social-links">
               <a
                 href="https://github.com/Felipe-Victoriani"
@@ -198,27 +206,27 @@
                 <i class="fab fa-whatsapp"></i>
               </a>
             </div>
-            <div class="hero-buttons">
-              <a href="#projetos" class="btn btn-primary" data-i18n="hero.ctaProjects">
-                <i class="fas fa-rocket" aria-hidden="true"></i> Ver Projetos
-              </a>
-              <a href="#contato" class="btn btn-secondary" data-i18n="hero.ctaContact">
-                <i class="fas fa-envelope" aria-hidden="true"></i> Contato
-              </a>
-            </div>
           </div>
+          <!-- Vídeo em P&B sobre círculo vermelho + stat em vidro -->
           <div class="hero-image">
-            <div class="avatar-container">
-              <div class="avatar-circle"></div>
-              <video
-                src="images/video_perfil.mp4"
-                class="avatar-img"
-                autoplay
-                loop
-                muted
-                playsinline
-                aria-label="Carlos Felipe Lima Victoriani - Desenvolvedor Full Stack Jr"
-              ></video>
+            <div class="hero-visual">
+              <div class="hero-circle" aria-hidden="true"></div>
+              <div class="hero-media">
+                <video
+                  src="images/video_perfil.mp4"
+                  class="avatar-img"
+                  autoplay
+                  loop
+                  muted
+                  playsinline
+                  aria-label="Carlos Felipe Lima Victoriani - Desenvolvedor Full Stack Jr"
+                  data-i18n-attr="aria-label:hero.avatarAlt"
+                ></video>
+              </div>
+              <div class="hero-stat">
+                <strong class="hero-stat-num" id="heroStatNum">12</strong>
+                <span class="hero-stat-label" data-i18n="hero.statLabel">Certificados<br />concluídos</span>
+              </div>
             </div>
           </div>
         </div>

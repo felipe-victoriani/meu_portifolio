@@ -35,6 +35,7 @@
           '<i class="fas fa-envelope" aria-hidden="true"></i> Contato',
         scroll: "Scroll",
         avatarAlt: "Carlos Felipe Lima Victoriani - Desenvolvedor Full Stack Jr",
+        statLabel: "Certificados<br />concluídos",
       },
       sobre: {
         title: "Sobre mim",
@@ -198,6 +199,7 @@
           '<i class="fas fa-envelope" aria-hidden="true"></i> Contact',
         scroll: "Scroll",
         avatarAlt: "Carlos Felipe Lima Victoriani - Junior Full Stack Developer",
+        statLabel: "Certificates<br />completed",
       },
       sobre: {
         title: "About me",

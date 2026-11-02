@@ -401,7 +401,9 @@ function escapeHtml(str) {
     .replace(/'/g, "&#039;");
 }
 
-function buildProjectCard({ name, description, tech, url, homepage }) {
+// index vem do .map() → numeração 01, 02... no card
+function buildProjectCard({ name, description, tech, url, homepage }, index = 0) {
+  const num = String(index + 1).padStart(2, "0");
   const viewProjectLabel = window.i18n ? window.i18n.t("projetos.viewProject") : "Ver projeto";
   const codeLabel = window.i18n ? window.i18n.t("projetos.code") : "Código";
   const techTags = tech.map((t) => `<span>${escapeHtml(t)}</span>`).join("");
@@ -411,6 +413,7 @@ function buildProjectCard({ name, description, tech, url, homepage }) {
   return `
     <div class="projeto-card">
       <div class="projeto-content">
+        <span class="projeto-num" aria-hidden="true">${num}</span>
         <h3>${escapeHtml(name)}</h3>
         <p>${escapeHtml(description)}</p>
         <div class="projeto-tech">${techTags}</div>
@@ -445,14 +448,17 @@ function renderStaticProjects() {
 function renderLiveProjects() {
   const grid = document.getElementById("projetos-grid");
   const counter = document.getElementById("repos-count");
-  const cards = currentLiveFeatured.map((repo) =>
-    buildProjectCard({
-      name: repo.name.replace(/[-_]/g, " "),
-      description: repo.description,
-      tech: repo.tech,
-      url: repo.url,
-      homepage: repo.homepage,
-    }),
+  const cards = currentLiveFeatured.map((repo, i) =>
+    buildProjectCard(
+      {
+        name: repo.name.replace(/[-_]/g, " "),
+        description: repo.description,
+        tech: repo.tech,
+        url: repo.url,
+        homepage: repo.homepage,
+      },
+      i,
+    ),
   );
   if (grid) grid.innerHTML = cards.join("");
   if (counter) {
@@ -545,27 +551,43 @@ console.log(
 );
 
 // ========================================
-// HERO SHADOW OVERLAY ANIMATION
-// Portado do componente React/Framer Motion
-// Equivale a: animate(hueRotateMotionValue, 360, { repeat: Infinity, ease: "linear" })
+// HERO STAT: total de certificados lido do DOM
+// (não fica desatualizado ao adicionar/remover card)
 // ========================================
 (function () {
-  const feHueRotate = document.getElementById("hero-hue-rotate");
-  if (!feHueRotate) return;
+  const statEl = document.getElementById("heroStatNum");
+  if (!statEl) return;
+  const total = document.querySelectorAll(".certificado-card").length;
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  // Configuração espelhando os props do componente original:
-  // animation.scale = 40, animation.speed = 30
-  // animationDuration = mapRange(30, 1, 100, 1000, 50) ≈ 722ms → duration = 722/25 ≈ 28.9s
-  const DURATION_MS = 28900;
-  let startTime = null;
-
-  function animateShadow(timestamp) {
-    if (!startTime) startTime = timestamp;
-    const elapsed = (timestamp - startTime) % DURATION_MS;
-    const hue = (elapsed / DURATION_MS) * 360;
-    feHueRotate.setAttribute("values", String(hue));
-    requestAnimationFrame(animateShadow);
+  if (reduceMotion) {
+    statEl.textContent = total;
+  } else {
+    statEl.textContent = "0";
+    window.addEventListener("load", () => countUp(statEl, total));
   }
+})();
 
-  requestAnimationFrame(animateShadow);
+// ========================================
+// VIDRO: brilho que segue o cursor
+// Atualiza --mx/--my no elemento sob o ponteiro (lido pelo ::after no CSS).
+// Só em dispositivos com mouse; um único listener delegado.
+// ========================================
+(function () {
+  if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+
+  const GLASS_SELECTOR =
+    ".btn, .lang-toggle, .theme-toggle, .back-to-top, .social-links a, .footer-social a, .projeto-links a, .contato-card";
+
+  document.addEventListener(
+    "pointermove",
+    (e) => {
+      const el = e.target.closest(GLASS_SELECTOR);
+      if (!el) return;
+      const rect = el.getBoundingClientRect();
+      el.style.setProperty("--mx", `${e.clientX - rect.left}px`);
+      el.style.setProperty("--my", `${e.clientY - rect.top}px`);
+    },
+    { passive: true },
+  );
 })();
