@@ -448,11 +448,13 @@ function renderStaticProjects() {
 function renderLiveProjects() {
   const grid = document.getElementById("projetos-grid");
   const counter = document.getElementById("repos-count");
+  // Tradução da descrição no idioma atual (i18n), com fallback para o texto do GitHub
+  const repoDescriptions = (window.i18n && window.i18n.t("repo_descriptions")) || {};
   const cards = currentLiveFeatured.map((repo, i) =>
     buildProjectCard(
       {
         name: repo.name.replace(/[-_]/g, " "),
-        description: repo.description,
+        description: repoDescriptions[repo.name.toLowerCase()] || repo.description,
         tech: repo.tech,
         url: repo.url,
         homepage: repo.homepage,

@@ -167,6 +167,23 @@
             "Plataforma de e-commerce desenvolvida com JavaScript, oferecendo experiência completa de compra online.",
         },
       },
+      // Descrições dos repositórios do GitHub (chave = nome do repo em minúsculas).
+      // Repo sem entrada aqui usa a descrição original do GitHub.
+      repo_descriptions: {
+        "crm-para-clinica": "CRM para clínica, com controle de pacientes.",
+        treino_pro:
+          "App em HTML, CSS e JS para personal trainers gerenciarem treinos e dietas dos alunos. Feito como PWA para funcionar como app nativo.",
+        poscredito:
+          "Site para dar seus 99 centavos de opinião sobre filmes, séries, animes e mais, usando API.",
+        loja_para_andreza: "Site de uma loja.",
+        lirios_semi_joias: "Loja virtual de semijoias.",
+        saas_oftalmo_15: "SaaS para gestão de clínica oftalmológica.",
+        farmcc_control: "Sistema de controle para centro cirúrgico.",
+        "faturamento_oftalmo-15": "SaaS de faturamento para clínica oftalmológica.",
+        "a.s-empressas": "Site para empresa de manutenção de cozinhas industriais.",
+        "coutinho-importados": "Loja virtual de importados.",
+        loja_andreia_cosmeticos: "Loja virtual de cosméticos.",
+      },
     },
     en: {
       meta: {
@@ -333,6 +350,23 @@
           description:
             "E-commerce platform built with JavaScript, offering a complete online shopping experience.",
         },
+      },
+      // Descrições dos repositórios do GitHub (chave = nome do repo em minúsculas).
+      // Repo sem entrada aqui usa a descrição original do GitHub.
+      repo_descriptions: {
+        "crm-para-clinica": "CRM for clinics to manage patient records.",
+        treino_pro:
+          "HTML, CSS and JS app for personal trainers to manage their clients' workouts and diets. Built as a PWA so it installs like a native app.",
+        poscredito:
+          "Website to share your two cents on movies, series, anime and more, powered by an API.",
+        loja_para_andreza: "Online store website.",
+        lirios_semi_joias: "Semi-jewelry online store.",
+        saas_oftalmo_15: "SaaS for managing an ophthalmology clinic.",
+        farmcc_control: "Control system for a hospital surgical center.",
+        "faturamento_oftalmo-15": "Billing SaaS for an ophthalmology clinic.",
+        "a.s-empressas": "Website for an industrial kitchen maintenance company.",
+        "coutinho-importados": "Imported goods online store.",
+        loja_andreia_cosmeticos: "Online cosmetics store.",
       },
     },
   };
